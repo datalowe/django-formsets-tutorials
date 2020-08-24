@@ -1,4 +1,4 @@
-# django-formsets-tutorials
+# Django formsets tutorial series
 This repo holds code used in my Django formsets tutorial series, 
 starting [here](datalowe.com/post/formsets-tutorial-1/).
 
