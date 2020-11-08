@@ -8,14 +8,14 @@
 
 <body>
     <button id="add-form-btn">Add form</button>
-    <form method='POST'>{% csrf_token %}
+    <form id="treasure-form" method='POST'>{% csrf_token %}
       {{ treasure_formset.management_form.as_p }}
       {% for treasure_form in treasure_formset.forms %}
         <h2>Form number {{ forloop.counter0 }}</h2>
         {{ treasure_form.as_p }}
         <hr>
       {% endfor %}
-      <input type='submit' value="Submit treasure">
+      <input id="submit-button" type='submit' value="Submit treasure">
     </form>
     <script src="{% static 'treasures/js/form.js' %}"></script>
 </body>
