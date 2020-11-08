@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <button id="add-form-btn">Add form</button>
     <form method='POST'>{% csrf_token %}
       {{ treasure_formset.management_form.as_p }}
       {% for treasure_form in treasure_formset.forms %}
