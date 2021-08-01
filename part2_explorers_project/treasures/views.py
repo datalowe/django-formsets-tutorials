@@ -24,18 +24,14 @@ def treasureform_view(request):
         treasure_formset = TreasureFormSet(data=request.POST,
                                            initial=initial_formset_data)
         if treasure_formset.is_valid() and treasure_formset.has_changed():
-            name0 = treasure_formset.cleaned_data[0]['name']
-            estimated_price0 = treasure_formset.cleaned_data[0]['estimated_price']
-            name1 = treasure_formset.cleaned_data[1]['name']
-            estimated_price1 = treasure_formset.cleaned_data[1]['estimated_price']
-            name2 = treasure_formset.cleaned_data[2]['name']
-            estimated_price2 = treasure_formset.cleaned_data[2]['estimated_price']
-            message = f'Thanks for your submission of {name0}, \
-                        with an estimated price of {estimated_price0}! \
-                        Thank you also for your submission of {name1}, \
-                        with an estimated price of {estimated_price1}! \
-                        And finally, thanks for your submission of {name2}, \
-                        with an estimated price of {estimated_price2}!'
+            message = ''
+            for treasure_data in treasure_formset.cleaned_data:
+                treasure_name = treasure_data['name']
+                treasure_price = treasure_data['estimated_price']
+                message += (
+                    f'Thanks for submitting {treasure_name}, with an '
+                    f'estimated price of {treasure_price}!\n'
+                )
             return HttpResponse(message)
     context = {
         'treasure_formset': treasure_formset
